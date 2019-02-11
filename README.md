@@ -1,4 +1,4 @@
-# ProjectEuler1
+# ProjectEuler
 One of my hobbies is to try out some Project Euler problems. 
 It is a great way to practice your creative and coding skills at the same time you have fun and relax a little bit.
 If you don't understand what I'm talking about check out the following link:
