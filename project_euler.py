@@ -39,3 +39,15 @@ def problem_21(): # Aprox 40 seconds
         if num == p2:
             numeros_amicos.append([num, p1])
     return sum([x+y for x,y in numeros_amicos if x != y])/2
+
+def problem_22():
+    import csv
+    import requests
+    url = 'https://projecteuler.net/project/resources/p022_names.txt'
+    with requests.Session() as sess:
+        page = sess.get(url)
+        names = page.content.decode('utf-8')
+        names = [x[0] for x in list(csv.reader(names)) if len(x[0])>0]
+    namesToNumber = list(map(lambda z: sum([ord(x)-64 for x in list(z)]), sorted(names) ))
+    total = sum([x*y for x,y in zip(namesToNumber, range(1, len(namesToNumber)+1 ))])
+    return total
