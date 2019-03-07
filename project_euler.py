@@ -51,3 +51,19 @@ def problem_22():
     namesToNumber = list(map(lambda z: sum([ord(x)-64 for x in list(z)]), sorted(names) ))
     total = sum([x*y for x,y in zip(namesToNumber, range(1, len(namesToNumber)+1 ))])
     return total
+    
+def problem42():
+    import pandas as pd
+    triangular = lambda x: 1/2*x*(x+1) # Def Triangular Numbers generator
+    triangular = [int(triangular(x)) for x in range(21)] # Create list of triangular numbers
+    url = "https://projecteuler.net/project/resources/p042_words.txt"
+    d = (
+        pd.read_csv(url, header=None, dtype=str)
+        .T
+        .rename(columns = {0:'words'})
+        .words
+        .map(lambda x: sum([ord(x)-64 for x in list(x)]))
+        .map(lambda x: x in triangular)
+        .sum()
+    )
+    return d
